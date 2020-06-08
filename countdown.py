@@ -24,7 +24,7 @@ def beep():
 
 def restart():
     global time_end
-    time_end = datetime.datetime.now() + datetime.timedelta(minutes=40)
+    time_end = datetime.datetime.now() + datetime.timedelta(minutes=60)
     clock.config(command=lambda: root.destroy())
     tick()
 
