@@ -5,7 +5,7 @@ import datetime
 import winsound
 import tkinter as tk
 
-time_end = datetime.datetime.now() + datetime.timedelta(minutes=40)
+time_end = datetime.datetime.now() + datetime.timedelta(minutes=60)
 time_zero = datetime.timedelta(seconds=0)
 
 
@@ -31,7 +31,7 @@ def restart():
 
 def pause():
     time.sleep(2)
-    clock.config(text=u"再战一回", bg='#dfd')
+    clock.config(text=u"continue", bg='#dfd')
 
 
 flag = 1
@@ -41,12 +41,12 @@ def tick():
     if deltatime < time_zero:
         if flag == 1:
             flag = 0
-            clock.config(text=u"成功番茄", bg='red')
+            clock.config(text=u"you did it", bg='red')
             clock.config(command=restart)
             clock.after(500, beep)
         else:
             flag = 1
-            clock.config(text=u"休息完毕")
+            clock.config(text=u"open another one")
             clock.after(500, pause)
     else:
         deltatime = str(deltatime).split('.')[0]
