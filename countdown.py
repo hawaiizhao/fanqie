@@ -17,21 +17,21 @@ def beep():
         winsound.Beep(600, 250)
         time.sleep(0.25)
     winsound.PlaySound("SystemExit", winsound.SND_ALIAS)
-    clock.config(text=u"开始休息")
+    clock.config(text=u"REST")
     time_end = datetime.datetime.now() + datetime.timedelta(minutes=10)
     clock.after(1000, tick)
 
 
 def restart():
     global time_end
-    time_end = datetime.datetime.now() + datetime.timedelta(minutes=40)
+    time_end = datetime.datetime.now() + datetime.timedelta(minutes=60)
     clock.config(command=lambda: root.destroy())
     tick()
 
 
 def pause():
     time.sleep(2)
-    clock.config(text=u"continue", bg='#dfd')
+    clock.config(text=u"NEXT", bg='#dfd')
 
 
 flag = 1
@@ -41,12 +41,12 @@ def tick():
     if deltatime < time_zero:
         if flag == 1:
             flag = 0
-            clock.config(text=u"you did it", bg='red')
+            clock.config(text=u"FINISHED", bg='red')
             clock.config(command=restart)
             clock.after(500, beep)
         else:
             flag = 1
-            clock.config(text=u"open another one")
+            clock.config(text=u"ANOTHER")
             clock.after(500, pause)
     else:
         deltatime = str(deltatime).split('.')[0]
